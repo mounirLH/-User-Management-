@@ -7,6 +7,7 @@ function UserTable({user}) {
   return (
     <>
     <h1>Users</h1>
+    
     <table className="table table-striped table-inverse table-responsive">
         <thead className="thead-inverse">
         <tr>
