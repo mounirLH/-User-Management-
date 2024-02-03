@@ -5,9 +5,13 @@ import UserAdd from '../UserAdd'
 function UserApp() {
   const [user,setUser]=useState([])
   const [lastId,setLastId]=useState(0)
+  const addUser=(data)=>{
+    setUser(prevState=>[...prevState,data])
+    setLastId(prev => prev+1)
+  }
   return (
     <>
-     <UserAdd lastId={lastId} />
+     <UserAdd lastId={lastId} onAddUser={addUser} />
    
     <UserTable user={user}/>
    

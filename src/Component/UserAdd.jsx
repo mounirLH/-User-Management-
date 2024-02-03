@@ -1,15 +1,17 @@
 import React, { useRef } from 'react'
 
-function UserAdd({lastId}) {
+function UserAdd({lastId,onAddUser}) {
 const fullName=useRef(null)  
 const Country=useRef(null)    
 const handlesubmit=(e)=>{
     e.preventDefault()
-    console.log({
-        name:fullName.current.value,
-       country: Country.current.value
-    })
+    
    
+    onAddUser({
+    fullName:fullName.current.value,
+    Country: Country.current.value,
+    id:lastId+1
+    })
 }    
   return (
     <>
@@ -32,10 +34,10 @@ const handlesubmit=(e)=>{
             <label htmlFor="country" className="col-sm-2 col-form-label">Country</label>
             <div className="col-sm-10">
                 <select id='country'name='country' className="form-select"ref={Country} >
-                    <option >Select your country</option>
-                    <option value="1">Morocco</option>
-                    <option value="2">Usa</option>
-                    <option value="3">Spain</option>
+                    <option value="">Select your country</option>
+                    <option value="Morocco">Morocco</option>
+                    <option value="Usa">Usa</option>
+                    <option value="Spain">Spain</option>
                 </select>
             </div>
         </div>
