@@ -1,20 +1,27 @@
-import React, { useRef,useContext } from 'react'
-import { UserContext } from './Users/UserApp'
+import React, { useEffect, useRef,useContext } from 'react'
+import { UserContext } from './UserApp'
 
-function UserAdd({}) {
-    const context=useContext(UserContext)
+
+
+function UserEdite({}) {
+ const context=useContext(UserContext)
 const fullName=useRef(null)  
 const Country=useRef(null)    
 const handlesubmit=(e)=>{
     e.preventDefault()
     
    
-    context.addUser({
+ /*  onAddUser({
     fullName:fullName.current.value,
     Country: Country.current.value,
-   id: context.lastId+1
+    id:lastId+1
     })
+    fullName.current.value='',
+    Country.current.value=''*/
 }    
+useEffect(()=>{
+    console.log(context)
+})
   return (
     <>
     <h1>Add user</h1>
@@ -55,4 +62,4 @@ const handlesubmit=(e)=>{
   )
 }
 
-export default UserAdd
+export default UserEdite

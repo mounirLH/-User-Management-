@@ -1,9 +1,8 @@
-import React from 'react'
-
-
-function UserTable({user}) {
- 
-    console.log('here',user)
+import React, { useContext } from 'react'
+import {UserContext} from './UserApp'
+import {Link} from "react-router-dom"
+function UserTable() {
+   const context=useContext(UserContext)  
     
   return (
     <>
@@ -15,15 +14,20 @@ function UserTable({user}) {
             <th>#ID</th>
             <th>Full Name</th>
             <th>Country</th>
+            <th>Opertations</th>
             
         </tr>
         </thead>
         <tbody>
-            {(user.length>0)? user.map((user,key)=><tr key={key}>
+            {(context.User?.length>0)? context.User.map((user,key)=><tr key={key}>
                 <td>{user.id} </td>
                 <td>{user.fullName}</td>
                 <td>{user.Country}</td>
-            </tr>):<tr><td colSpan={3}align={"center"} >No users</td></tr>
+                <td>
+    <Link to={`/user/${user.id}/edit`} className={'btn btn-primary mx-1'}>Update</Link>
+    <Link to={`/user/${user.id}/edit`} className={'btn btn-danger '}>Delete</Link>
+                </td>
+            </tr>):<tr><td colSpan={4}align={"center"} >No users</td></tr>
 }
             </tbody>
             </table>
